@@ -27,8 +27,8 @@ cd ..
 
 rm /etc/systemd/system/autostart.service
 
-cp /home/mcadmin/bootup.sh /home/mcadmin/LyadhCraft/bootup.sh
-chmod +x /home/mcadmin/LyadhCraft/bootup.sh
+cp /home/mcadmin/runmcserver.sh /home/mcadmin/LyadhCraft/runmcserver.sh
+chmod +x /home/mcadmin/LyadhCraft/runmcserver.sh
 
 chown mcadmin:mcadmin -R .
 
@@ -41,12 +41,12 @@ Description=Minecraft Test Service\n\
 # User=minecraft\n\
 # Group=minecraft\n\
 WorkingDirectory=/home/mcadmin/LyadhCraft\n\
-ExecStart=sh /home/mcadmin/LyadhCraft/bootup.sh\n\
+ExecStart=sh /home/mcadmin/LyadhCraft/runmcserver.sh\n\
 RestartSec=10\n\
 Restart=always\n\
 \n\
 [Install]\n\
-WantedBy=multi-user.target" > /etc/systemd/system/autostart.service
+WantedBy=multi-user.target" > /etc/systemd/system/runmcserver.service
 
 systemctl daemon-reload
 systemctl enable autostart.service # enables the server for restart
