@@ -1,0 +1,13 @@
+[Unit]
+Description=Autostart and Autoshutdown Scheduling Service
+
+[Service]
+# User=minecraft
+# Group=minecraft
+WorkingDirectory=/home/mcadmin/LyadhCraft
+ExecStart=sh /home/mcadmin/LyadhCraft/bootup.sh
+# RestartSec=10
+# Restart=always
+
+[Install]
+WantedBy=multi-user.target
