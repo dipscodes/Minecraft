@@ -1,0 +1,13 @@
+[Unit] 
+Description=Minecraft Autostart Service  
+
+[Service] 
+User=mcadmin 
+Group=mcadmin 
+WorkingDirectory=/home/mcadmin/LyadhCraft 
+ExecStart=sh /home/mcadmin/LyadhCraft/runmcserver.sh 
+RestartSec=10 
+Restart=always  
+
+[Install] 
+WantedBy=multi-user.target
