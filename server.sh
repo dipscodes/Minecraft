@@ -1,5 +1,6 @@
 #!/bin/bash
 
+server_name="LyadhCraft"
 server_directory="LyadhCraft"
 present_directory=$(pwd)
 . $present_directory/configs/server.config
