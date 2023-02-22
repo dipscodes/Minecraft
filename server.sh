@@ -1,9 +1,13 @@
 #!/bin/bash
 
+server_directory="LyadhCraft"
+present_directory=$(pwd)
+. $present_directory/configs/server.config
+
 cd $HOME
-rm -r LyadhCraft 
-mkdir LyadhCraft
-cd LyadhCraft
+rm -r $server_directory 
+mkdir $server_directory
+cd $server_directory
 
 curl -OJ https://meta.fabricmc.net/v2/versions/loader/1.19.2/0.14.14/0.11.1/server/jar  # server download 1.19.2
 
@@ -20,9 +24,9 @@ unzip SERVER_MODS.zip
 rm SERVER_MODS.zip
 cd ..
 
-cp ./runmcserver.sh $HOME/LyadhCraft/runmcserver.sh
+cp $present_directory/configs/runmcserver.sh $HOME/LyadhCraft/runmcserver.sh
 chmod +x $HOME/LyadhCraft/runmcserver.sh
-cp ./bootup.sh $HOME/LyadhCraft/bootup.sh
+cp $present_directory/configs/bootup.sh $HOME/LyadhCraft/bootup.sh
 chmod +x $HOME/LyadhCraft/bootup.sh
 
 chown mcadmin:mcadmin -R .
@@ -32,7 +36,7 @@ service autostart stop
 systemctl disable autostart.service
 rm /etc/systemd/system/autostart.service
 
-cp ./autostart.service /etc/systemd/system/autostart.service
+cp $present_directory/configs/autostart.service /etc/systemd/system/autostart.service
 systemctl daemon-reload
 systemctl enable autostart.service # enables the service for restart
 service autostart status
@@ -44,7 +48,7 @@ service runmcserver stop
 systemctl disable runmcserver.service
 rm /etc/systemd/system/runmcserver.service
 
-cp ./runmcserver.service /etc/systemd/system/runmcserver.service
+cp $present_directory/configs/runmcserver.service /etc/systemd/system/runmcserver.service
 systemctl daemon-reload
 systemctl enable runmcserver.service # enables the server for restart
 service runmcserver status
