@@ -24,12 +24,12 @@ unzip SERVER_MODS.zip
 rm SERVER_MODS.zip
 cd ..
 
-cp $present_directory/configs/runmcserver.sh $HOME/LyadhCraft/runmcserver.sh
-chmod +x $HOME/LyadhCraft/runmcserver.sh
-cp $present_directory/configs/bootup.sh $HOME/LyadhCraft/bootup.sh
-chmod +x $HOME/LyadhCraft/bootup.sh
+cp $present_directory/configs/runmcserver.sh $HOME/$server_directory/runmcserver.sh
+chmod +x $HOME/$server_directory/runmcserver.sh
+cp $present_directory/configs/bootup.sh $HOME/$server_directory/bootup.sh
+chmod +x $HOME/$server_directory/bootup.sh
 
-chown mcadmin:mcadmin -R .
+chown $USER:$USER -R .
 
 # autostart and autoshutdown
 service autostart stop
