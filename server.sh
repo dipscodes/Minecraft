@@ -47,7 +47,7 @@ rm /etc/systemd/system/runmcserver.service
 
 cp /home/mcadmin/runmcserver.service /etc/systemd/system/runmcserver.service
 systemctl daemon-reload
-Service# enables the server for restart
+systemctl enable runmcserver.service # Service enables the server for restart
 # service runmcserver status
 chown mcadmin:mcadmin -R /home/mcadmin/LyadhCraft
 service runmcserver start # run the server for the first time
