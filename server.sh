@@ -1,14 +1,9 @@
 #!/bin/bash
 
-server_name="LyadhCraft"
-server_directory="LyadhCraft"
-present_directory=$(pwd)
-. $present_directory/configs/server.config
-
-cd $HOME
-rm -r $server_directory 
-mkdir $server_directory
-cd $server_directory
+cd /home/mcadmin/ # needs to be generalilzed
+rm -r LyadhCraft 
+mkdir LyadhCraft
+cd LyadhCraft
 
 curl -OJ https://meta.fabricmc.net/v2/versions/loader/1.19.2/0.14.14/0.11.1/server/jar  # server download 1.19.2
 
@@ -25,22 +20,23 @@ unzip SERVER_MODS.zip
 rm SERVER_MODS.zip
 cd ..
 
-cp $present_directory/configs/runmcserver.sh $HOME/$server_directory/runmcserver.sh
-chmod +x $HOME/$server_directory/runmcserver.sh
-cp $present_directory/configs/bootup.sh $HOME/$server_directory/bootup.sh
-chmod +x $HOME/$server_directory/bootup.sh
+# cp /home/mcadmin/template.properties /home/mcadmin/LyadhCraft/server.properties
+cp /home/mcadmin/runmcserver.sh /home/mcadmin/LyadhCraft/runmcserver.sh
+chmod +x /home/mcadmin/LyadhCraft/runmcserver.sh
+cp /home/mcadmin/bootup.sh /home/mcadmin/LyadhCraft/bootup.sh
+chmod +x /home/mcadmin/LyadhCraft/bootup.sh
 
-chown $USER:$USER -R .
+# chown mcadmin:mcadmin -R .
 
 # autostart and autoshutdown
 service autostart stop
 systemctl disable autostart.service
 rm /etc/systemd/system/autostart.service
 
-cp $present_directory/configs/autostart.service /etc/systemd/system/autostart.service
+cp /home/mcadmin/autostart.service /etc/systemd/system/autostart.service
 systemctl daemon-reload
 systemctl enable autostart.service # enables the service for restart
-service autostart status
+# service autostart status
 service autostart start # run the service for the first time
 
 
@@ -49,11 +45,11 @@ service runmcserver stop
 systemctl disable runmcserver.service
 rm /etc/systemd/system/runmcserver.service
 
-cp $present_directory/configs/runmcserver.service /etc/systemd/system/runmcserver.service
+cp /home/mcadmin/runmcserver.service /etc/systemd/system/runmcserver.service
 systemctl daemon-reload
-systemctl enable runmcserver.service # enables the server for restart
-service runmcserver status
+Service# enables the server for restart
+# service runmcserver status
+chown mcadmin:mcadmin -R /home/mcadmin/LyadhCraft
 service runmcserver start # run the server for the first time
 
-chown mcadmin:mcadmin -R .
-journalctl -fu runmcserver.service
+# journalctl -fu runmcserver.service
