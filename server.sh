@@ -20,12 +20,13 @@ unzip SERVER_MODS.zip
 rm SERVER_MODS.zip
 cd ..
 
+# cp /home/mcadmin/template.properties /home/mcadmin/LyadhCraft/server.properties
 cp /home/mcadmin/runmcserver.sh /home/mcadmin/LyadhCraft/runmcserver.sh
 chmod +x /home/mcadmin/LyadhCraft/runmcserver.sh
 cp /home/mcadmin/bootup.sh /home/mcadmin/LyadhCraft/bootup.sh
 chmod +x /home/mcadmin/LyadhCraft/bootup.sh
 
-chown mcadmin:mcadmin -R .
+# chown mcadmin:mcadmin -R .
 
 # autostart and autoshutdown
 service autostart stop
@@ -35,7 +36,7 @@ rm /etc/systemd/system/autostart.service
 cp /home/mcadmin/autostart.service /etc/systemd/system/autostart.service
 systemctl daemon-reload
 systemctl enable autostart.service # enables the service for restart
-service autostart status
+# service autostart status
 service autostart start # run the service for the first time
 
 
@@ -46,9 +47,9 @@ rm /etc/systemd/system/runmcserver.service
 
 cp /home/mcadmin/runmcserver.service /etc/systemd/system/runmcserver.service
 systemctl daemon-reload
-systemctl enable runmcserver.service # enables the server for restart
-service runmcserver status
+Service# enables the server for restart
+# service runmcserver status
+chown mcadmin:mcadmin -R /home/mcadmin/LyadhCraft
 service runmcserver start # run the server for the first time
 
-chown mcadmin:mcadmin -R .
-journalctl -fu runmcserver.service
+# journalctl -fu runmcserver.service
