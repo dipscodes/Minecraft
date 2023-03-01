@@ -18,4 +18,4 @@ list_of_droplets = requests.get(url=get_url, headers=headers).json()["droplets"]
 for droplet in list_of_droplets:
     if droplet["id"] == droplet_id:
         if droplet["status"] == "off":
-            requests.post(url=post_url, json=data, headers=headers).json()
+            requests.post(url=post_url, json=data, headers=headers)
