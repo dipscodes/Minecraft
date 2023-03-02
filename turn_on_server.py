@@ -12,8 +12,6 @@ headers = {
     "Authorization": f"Bearer {DIGITALOCEAN_TOKEN}"
 }
 
-print(headers)
-
 data = {"type": "power_on"}
 
 list_of_droplets = requests.get(url=get_url, headers=headers).json()
