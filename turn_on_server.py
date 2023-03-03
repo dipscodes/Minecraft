@@ -2,8 +2,8 @@ import requests
 import logging
 
 
-droplet_id = 342253375
-DIGITALOCEAN_TOKEN = "dop_v1_909222ed2262c05a0f80340e44d8f83927e62efcb34f546ae20c145aac117f2d"
+droplet_id = 123456789
+DIGITALOCEAN_TOKEN = "your token goes here"
 
 get_url = "https://api.digitalocean.com/v2/droplets?page=1"
 post_url = f"https://api.digitalocean.com/v2/droplets/{droplet_id}/actions"
