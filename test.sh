@@ -1,12 +1,16 @@
 #!/bin/bash
 
-server_directory_name="LyadhCraft"
-present_directory=$(pwd)
-. $present_directory/configs/server.config
+# timedatectl set-timezone Asia/Kolkata
+ct=$(date +%H%M)
+cd=$(date +%u)
+ct=1300
+cd=5
 
-cd $HOME
-rm -r $server_directory_name 
-mkdir $server_directory_name
-cd $server_directory_name
+if [[ "$ct" -gt 0200 ] && [ "$ct" -lt 1000 ]] || [[ $cd -gt 0 ] && [ $cd -lt 5 ]] || [[ "$ct" -lt 1600 ] && [ $cd == 5 ]]; then
+    echo Server illegally started at $(date) >> /home/dips/server_1.log
+    shutdown now
+    exit 0
+fi
 
-cp $present_directory/runmcserver.sh $HOME/$server_directory_name.
+shutdown 02:00
+echo Server normally started at $(date) >> /home/dips/server_1.log
